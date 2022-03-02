@@ -1,2 +1,7 @@
 php artisan make:seeder StudentSeeder
 php artisan db:seed
+
+C:\Users\diak\Documents\szivak_gergo\dev\Laravel\laravelgyakorlo>php artisan make:model Student
+Model created successfully.
+
+C:\Users\diak\Documents\szivak_gergo\dev\Laravel\laravelgyakorlo>php artisan make:factory StudentFactory --model=Student
