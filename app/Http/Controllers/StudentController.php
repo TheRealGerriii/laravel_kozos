@@ -57,7 +57,12 @@ class StudentController extends Controller
         //                 ->get();
 
         //$students = DB::table( "students" )->whereBetween("id", [2, 6])->get();
-        $students = DB::table( "students" )->whereIn("id", [2, 4, 6, 8])->get();
+        //$students = DB::table( "students" )->whereIn("id", [2, 4, 6, 8])->get();
+        
+        $students = DB::table("students")
+        ->select( "students.name as Név", "students.email as Email", "courses.course as Tanfolyam", "courses.price as Ár" )
+        ->rightjoin("courses", "students.id", "=", "courses.student_id")->get();
+
         echo "<pre>";
         print_r($students);
         //SELECT * from students where id = 9 AND name = "Itzel Walker" OR email="lue.renner@example.net"
