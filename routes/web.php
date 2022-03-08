@@ -18,3 +18,5 @@ Route::get("/student", [StudentController::class, "getStudent"]);
 Route::get("/newstudent", [StudentController::class, "newStudent"]);
 Route::get("/updatestudent", [StudentController::class, "updateStudent"]);
 Route::get("/delstudent", [StudentController::class, "deleteStudent"]);
+
+Route::get("/list-student", [StudentController::class, "listStudent"]);
