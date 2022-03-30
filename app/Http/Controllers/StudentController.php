@@ -59,12 +59,50 @@ class StudentController extends Controller
         //$students = DB::table( "students" )->whereBetween("id", [2, 6])->get();
         //$students = DB::table( "students" )->whereIn("id", [2, 4, 6, 8])->get();
         
-        $students = DB::table("students")
-        ->select( "students.name as Név", "students.email as Email", "courses.course as Tanfolyam", "courses.price as Ár" )
-        ->rightjoin("courses", "students.id", "=", "courses.student_id")->get();
+        // $students = DB::table("students")
+        // ->select( "students.name as Név", "students.email as Email", "courses.course as Tanfolyam", "courses.price as Ár" )
+        // ->rightjoin("courses", "students.id", "=", "courses.student_id")->get();
 
         echo "<pre>";
         print_r($students);
         //SELECT * from students where id = 9 AND name = "Itzel Walker" OR email="lue.renner@example.net"
     }
+    public function insertStudent() {
+
+        DB::table( "courses" )->insert(
+            [
+                [ "course" => "Django", "price" => 220000, "student_id" => 14 ],
+                [ "course" => "C++", "price" => 180000, "student_id" => 23 ]
+            ]
+            );
+        echo "Adtatok elmentve";
+    }
+
+    public function updateCourse() {
+
+        DB::table( "courses" )->where( "id", 6 )->update([
+            "course" => "Angular",
+            "price" => 170000,
+            "student_id" => 38 
+        ]);
+
+        echo "Módosítás sikeres";
+    }
+
+    public function updateOrCourse() {
+
+        DB::table( "courses" )->updateOrInsert(
+            
+            [ "course" => "C" ],
+            [ "course" => "C", "price" => 100000, "student_id" => 4 ]
+        );
+
+        echo "Adatok frissítve";
+    }
+
+    public function deleteCourse() {
+
+        DB::table( "courses" )->where( "id", 6 )->delete();
+    }
+
 }
