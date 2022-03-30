@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,5 @@ Route::get("/delstudent", [StudentController::class, "deleteStudent"]);
 Route::get("/list-student", [StudentController::class, "listStudent"]);
 
 Route::get("/insert-student", [StudentController::class, "insertStudent"]);
+
+Route::get("{local}/service", [ServiceController::class,"service"]);
